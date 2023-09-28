@@ -1,11 +1,8 @@
 package com.example.tp_final;
 
-import com.example.tp_final.Entidades.*;
-import com.example.tp_final.Enumeraciones.*;
 import com.example.tp_final.Repositorios.ClienteRepository;
 import com.example.tp_final.Repositorios.DomicilioRepository;
 import com.example.tp_final.Repositorios.EmpleadoRepository;
-import com.example.tp_final.Repositorios.EstadoUsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,8 +15,9 @@ public class TpFinalApplication {
         SpringApplication.run(TpFinalApplication.class, args);
     }
     @Bean
-    public CommandLineRunner run(ClienteRepository clienteRepository, DomicilioRepository domicilioRepository, EstadoUsuarioRepository estadoUsuarioRepository, EmpleadoRepository empleadoRepository) {
+    public CommandLineRunner run(ClienteRepository clienteRepository, DomicilioRepository domicilioRepository, EmpleadoRepository empleadoRepository) {
         return (args) -> {
+            /*
             //Se crean 3 clientes
             Cliente cliente1 = new Cliente("Dalia", "Adam", "123456789","DaliaAdam@gmail.com","password");
             EstadoUsuario estadoUsuario1 = new EstadoUsuario(Estado.Alta);//Al instanciar un usuario se crea un estado con alta por defecto
@@ -57,7 +55,7 @@ public class TpFinalApplication {
             Domicilio Domicilio2 = new Domicilio("324","Colon","5515","12","3", Localidad.Godoy_Cruz,cliente2);
             Domicilio Domicilio3 = new Domicilio("275","Libertad","5611","-","-", Localidad.Guaymallen,cliente3);
             Domicilio Domicilio4 = new Domicilio("542","Roca","5611","-","-", Localidad.Guaymallen,cliente3); //El cliente 3 tiene 2 domicilios asociados
-
+            */
         };
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name="Domicilio")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Domicilio implements Serializable {
     @Id
     private String numero;
@@ -23,6 +24,7 @@ public class Domicilio implements Serializable {
     private String codigoPostal;
     private String nroDpt;
     private String pisoDto;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private Localidad localidad;
@@ -31,14 +33,4 @@ public class Domicilio implements Serializable {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Usuario usuario;
 
-    //Constructor
-    public Domicilio(String numero, String calle, String codigoPostal, String nroDpt, String pisoDto, Localidad localidad, Usuario usuario) {
-        this.numero = numero;
-        this.calle = calle;
-        this.codigoPostal = codigoPostal;
-        this.nroDpt = nroDpt;
-        this.pisoDto = pisoDto;
-        this.localidad = localidad;
-        this.usuario = usuario;
-    }
 }

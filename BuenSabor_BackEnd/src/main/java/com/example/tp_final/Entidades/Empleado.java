@@ -1,5 +1,6 @@
 package com.example.tp_final.Entidades;
 
+import com.example.tp_final.Enumeraciones.Estado;
 import com.example.tp_final.Enumeraciones.Rol;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -22,8 +23,9 @@ public class Empleado extends Usuario {
     private Rol rol;
 
     //Constructor
-    public Empleado(String nombre, String apellido, String telefono, String email, String password, Rol rol) {
-        super(nombre, apellido, telefono, email, password);
+
+    public Empleado(String nombre, String apellido, String telefono, String email, String password, Estado estadoUsuario, Rol rol) {
+        super(nombre, apellido, telefono, email, password, estadoUsuario);
         this.rol = rol;
     }
 }

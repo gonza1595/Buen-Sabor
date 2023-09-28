@@ -17,11 +17,12 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Articulo extends Base {
+public class Articulo extends BaseWithDate {
 
     private String denominacion;
     private String descripcion;
     private String Url_Imagen;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private Estado estadoArticulo;

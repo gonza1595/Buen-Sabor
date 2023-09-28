@@ -15,6 +15,7 @@ public class DetalleArtManufacturado extends Base {
 
     @NotNull
     private int cantidad;
+
     //Relacion N a 1 con la clase ArticuloManufacturado
     @NotNull
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

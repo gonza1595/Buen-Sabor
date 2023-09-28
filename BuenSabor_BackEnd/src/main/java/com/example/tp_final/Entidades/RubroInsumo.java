@@ -16,9 +16,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RubroInsumo extends Base {
+public class RubroInsumo extends BaseWithDate {
 
     private String denominacion;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private Estado estadoRubro;

@@ -20,7 +20,8 @@ public class Factura extends Base {
 
     private LocalDate fechaFacturacion;
     private double descuento;
-    private double total;
+    private double totalFinal;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;

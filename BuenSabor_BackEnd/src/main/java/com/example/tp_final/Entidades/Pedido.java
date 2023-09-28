@@ -28,7 +28,9 @@ public class Pedido extends Base {
 
     private LocalDateTime fechaPedido;
     private LocalTime horaEstimadaEntrega;
+    private double totalCosto;
     private double total;
+
     @NotNull
     @Enumerated(EnumType.STRING)
     private Pagado pagado;
@@ -54,7 +56,7 @@ public class Pedido extends Base {
     //Constructor
     public Pedido(Pagado pagado, TipoEnvio tipoEnvio, Cliente cliente) {
         this.pagado = pagado;
-        this.estadoPedido = EstadoPedido.A_Confirmar;
+        this.estadoPedido = EstadoPedido.A_Confirmar;            //Al iniciar un pedido por defecto se inicializa con el estado A_Confirmar
         this.tipoEnvio = tipoEnvio;
         this.cliente = cliente;
     }
@@ -67,7 +69,7 @@ public class Pedido extends Base {
         }else {
             factura.setDescuento(1.0);
         }
-        factura.setTotal(this.total* factura.getDescuento());
+        factura.setTotalFinal(this.total* factura.getDescuento());
         this.factura = factura;
     }
 

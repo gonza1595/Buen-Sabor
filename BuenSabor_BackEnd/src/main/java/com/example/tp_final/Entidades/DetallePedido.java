@@ -20,23 +20,16 @@ public class DetallePedido extends Base {
     private double subtotal;
 
     //Relacion N a 1 con la clase rubroInsumo
-    @NotNull
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private RubroInsumo rubroInsumo;
 
     //Relacion N a 1 con la clase rubroArtManufacturado
-    @NotNull
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Rubro_Art_Manufacturado rubroArtManufacturado;
 
-    //Relacion N a 1 con la clase Pedido
-    @NotNull
+    //Relacion N a 1 con la clase Pedid
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Pedido pedido;
-
-    //Constructor
-
-
 
 }
 

@@ -1,6 +1,7 @@
 package com.example.tp_final.Entidades;
 
 import com.example.tp_final.Enumeraciones.Estado;
+import com.example.tp_final.Enumeraciones.Pagado;
 import jakarta.persistence.*;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -14,13 +15,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 
-public abstract class Usuario implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public abstract class Usuario extends BaseWithDate implements Serializable {
+
     @NotNull
     private String nombre;
     @NotNull
@@ -32,12 +30,17 @@ public abstract class Usuario implements Serializable {
     @NotNull
     private String password;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Estado estadoUsuario;
+
     //Constructor
-    public Usuario(String nombre, String apellido, String telefono, String email, String password) {
+    public Usuario(String nombre, String apellido, String telefono, String email, String password, Estado estadoUsuario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.email = email;
         this.password = password;
+        this.estadoUsuario = estadoUsuario;
     }
 }
