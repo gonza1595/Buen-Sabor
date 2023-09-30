@@ -1,9 +1,7 @@
 package com.example.tp_final.Entidades;
 
 import com.example.tp_final.Enumeraciones.Estado;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,12 +10,15 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.io.Serializable;
 
-@MappedSuperclass
+@Entity
+@Table(name="Articulos")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Articulo extends BaseWithDate {
+@Inheritance(strategy = InheritanceType.JOINED)
+
+public abstract class Articulo extends BaseWithDate {
 
     private String denominacion;
     private String descripcion;
@@ -26,5 +27,10 @@ public class Articulo extends BaseWithDate {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Estado estadoArticulo;
+
+    //Relacion N a 1 con la clase Rubro
+    @NotNull
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private Rubro rubro;
 
 }

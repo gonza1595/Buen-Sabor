@@ -15,6 +15,9 @@ import java.util.List;
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class Cliente extends Usuario {
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Pedido> Pedidos = new ArrayList<>();
+
     //Constructor
     public Cliente(String nombre, String apellido, String telefono, String email, String password, Estado estadoUsuario) {
         super(nombre, apellido, telefono, email, password, estadoUsuario);

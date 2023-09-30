@@ -10,7 +10,6 @@ import java.time.LocalTime;
 @Entity
 @Table(name="Detalle_Pedido")
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class DetallePedido extends Base {
@@ -19,17 +18,18 @@ public class DetallePedido extends Base {
     private int cantidad;
     private double subtotal;
 
-    //Relacion N a 1 con la clase rubroInsumo
+    //Relacion N a 1 con la clase articulo
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private RubroInsumo rubroInsumo;
+    private Articulo articulo;
 
-    //Relacion N a 1 con la clase rubroArtManufacturado
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Rubro_Art_Manufacturado rubroArtManufacturado;
-
-    //Relacion N a 1 con la clase Pedid
+    //Relacion N a 1 con la clase Pedido
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Pedido pedido;
 
+    public DetallePedido(int cantidad, Articulo articulo, Pedido pedido) {
+        this.cantidad = cantidad;
+        this.articulo = articulo;
+        this.pedido = pedido;
+    }
 }
 

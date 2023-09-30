@@ -3,10 +3,7 @@ package com.example.tp_final.Entidades;
 import com.example.tp_final.Enumeraciones.Estado;
 import com.example.tp_final.Enumeraciones.Rol;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.io.Serializable;
@@ -15,6 +12,8 @@ import java.io.Serializable;
 @Table(name="Empleado")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class Empleado extends Usuario {
 

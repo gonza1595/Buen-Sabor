@@ -53,10 +53,14 @@ public class Pedido extends Base {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Factura factura;
 
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<DetallePedido> detallesPedido = new ArrayList<>();
+
     //Constructor
-    public Pedido(Pagado pagado, TipoEnvio tipoEnvio, Cliente cliente) {
+    public Pedido(Pagado pagado, EstadoPedido estadoPedido, TipoEnvio tipoEnvio, Cliente cliente) {
+        this.fechaPedido = LocalDateTime.now();
         this.pagado = pagado;
-        this.estadoPedido = EstadoPedido.A_Confirmar;            //Al iniciar un pedido por defecto se inicializa con el estado A_Confirmar
+        this.estadoPedido = estadoPedido;
         this.tipoEnvio = tipoEnvio;
         this.cliente = cliente;
     }
