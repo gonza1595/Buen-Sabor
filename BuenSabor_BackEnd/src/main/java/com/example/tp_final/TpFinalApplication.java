@@ -10,6 +10,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class TpFinalApplication {
     //Inyeccion de dependencias por atributo
@@ -128,17 +131,17 @@ public class TpFinalApplication {
             unidadMedidaRepository.save(unidadMedida2);
 
             //Se crean articulos y se asocias a los rubros
-            ArticuloInsumo articuloInsumo1 = new ArticuloInsumo("Vino Blanco","descripcion..","urlImagen..",Estado.Alta,rubroInsumo1,1000.00,1,1,unidadMedida1);
-            ArticuloInsumo articuloInsumo2 = new ArticuloInsumo("Pepsi","descripcion..","urlImagen..",Estado.Alta,rubroInsumo2,800.00,1,1,unidadMedida1);
-            ArticuloInsumo articuloInsumo3 = new ArticuloInsumo("Queso Mozzarella","descripcion..","urlImagen..",Estado.Alta,rubroInsumo2,300.00,1,1,unidadMedida2);
-            ArticuloInsumo articuloInsumo4 = new ArticuloInsumo("Tomate","descripcion..","urlImagen..",Estado.Alta,rubroInsumo2,500.00,1,1,unidadMedida2);
+            ArticuloInsumo articuloInsumo1 = new ArticuloInsumo("Vino Blanco","descripcion..","urlImagen..",1500,Estado.Alta,rubroInsumo1,1000,1,1,unidadMedida1);
+            ArticuloInsumo articuloInsumo2 = new ArticuloInsumo("Pepsi","descripcion..","urlImagen..",1200,Estado.Alta,rubroInsumo2,800.00,1,1,unidadMedida1);
+            ArticuloInsumo articuloInsumo3 = new ArticuloInsumo("Queso Mozzarella","descripcion..","urlImagen..",700,Estado.Alta,rubroInsumo2,300,1,1,unidadMedida2);
+            ArticuloInsumo articuloInsumo4 = new ArticuloInsumo("Tomate","descripcion..","urlImagen..",1000,Estado.Alta,rubroInsumo2,500,1,1,unidadMedida2);
 
             articuloRepository.save(articuloInsumo1);
             articuloRepository.save(articuloInsumo2);
             articuloRepository.save(articuloInsumo3);
             articuloRepository.save(articuloInsumo4);
 
-            ArticuloManufacturado articuloManufacturado1 = new ArticuloManufacturado("Pizza Mozzarella","descripcion..","urlImagen..",Estado.Alta,rubroArtManufacturado1,25,1500,1000,"receta...");
+            ArticuloManufacturado articuloManufacturado1 = new ArticuloManufacturado("Pizza Mozzarella","descripcion..","urlImagen..",1500,Estado.Alta,rubroArtManufacturado1,25,"receta...");
             DetalleArtManufacturado detalleArtManufacturado1 = new DetalleArtManufacturado(1,articuloManufacturado1,articuloInsumo3);
             DetalleArtManufacturado detalleArtManufacturado2 = new DetalleArtManufacturado(2,articuloManufacturado1,articuloInsumo4);
 
@@ -159,8 +162,32 @@ public class TpFinalApplication {
             pedido1.getDetallesPedido().add(detallePedido2);
             pedidoRepository.save(pedido1);
 
-            //Se elimina el cliente 3, eliminando tambien sus domicilios asociados
+            //Se elimina el cliente 3, eliminando tambien sus domicilios y pedidos asociados
             clienteRepository.deleteById(3L);
+
+            //Se muestran datos del pedido 1
+            pedido1.calcularTotal();
+            System.out.println("Precio Total de pedido: "+ pedido1.getTotal());
+            System.out.println("Detalles de Pedido");
+            for (DetallePedido detallePedido: pedido1.getDetallesPedido()) {
+                System.out.println("Nombre Articulo "+detallePedido.getArticulo().getDenominacion());
+                System.out.println("Cantidad : "+detallePedido.getCantidad());
+                System.out.println("Precio por Unidad "+ detallePedido.getArticulo().getPrecioVenta());
+                System.out.println("----------------------------------");
+            }
+
+            //Se muestran datos del articulo Manufacturado 1
+            articuloManufacturado1.calcularPrecioCosto();
+            System.out.println("Nombre articulo Manufacturado: "+articuloManufacturado1.getDenominacion());
+            System.out.println("Costo Total: "+ articuloManufacturado1.getPrecioCosto());
+            System.out.println("Detalles de articulo");
+            for (DetalleArtManufacturado detalleArtManufacturado: articuloManufacturado1.getDetallesArtManufacturado()) {
+                System.out.println("Nombre Articulo Insumo: "+detalleArtManufacturado.getArticuloInsumo().getDenominacion());
+                System.out.println("Cantidad : "+detalleArtManufacturado.getCantidad());
+                System.out.println("Precio por Unidad: "+ detalleArtManufacturado.getArticuloInsumo().getPrecioCompra());
+                System.out.println("Unidad Medida: "+ detalleArtManufacturado.getArticuloInsumo().getUnidadMedida().getDenominacion());
+                System.out.println("----------------------------------");
+            }
         };
     }
 }

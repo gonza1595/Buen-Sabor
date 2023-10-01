@@ -25,9 +25,8 @@ public class ArticuloInsumo extends Articulo {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private UnidadMedida unidadMedida;
 
-    //Constructor
-    public ArticuloInsumo(String denominacion, String descripcion, String Url_Imagen, Estado estadoArticulo, Rubro rubro, double precioCompra, int stockActual, int stockMinimo, UnidadMedida unidadMedida) {
-        super(denominacion, descripcion, Url_Imagen, estadoArticulo, rubro);
+    public ArticuloInsumo(String denominacion, String descripcion, String Url_Imagen, double precioVenta, Estado estadoArticulo, Rubro rubro, double precioCompra, int stockActual, int stockMinimo, UnidadMedida unidadMedida) {
+        super(denominacion, descripcion, Url_Imagen, precioVenta, estadoArticulo, rubro);
         this.precioCompra = precioCompra;
         this.stockActual = stockActual;
         this.stockMinimo = stockMinimo;

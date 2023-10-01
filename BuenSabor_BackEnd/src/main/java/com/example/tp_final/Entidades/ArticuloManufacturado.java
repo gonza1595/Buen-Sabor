@@ -22,19 +22,23 @@ import java.util.List;
 public class ArticuloManufacturado extends Articulo {
 
     private int tiempoEstimadoCocina; //En minutos
-    private double precioVenta;
     private double precioCosto;
     private String receta;
 
     @OneToMany(mappedBy = "articuloManufacturado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleArtManufacturado> detallesArtManufacturado = new ArrayList<>();
 
-    //Constructor
-    public ArticuloManufacturado(String denominacion, String descripcion, String Url_Imagen, Estado estadoArticulo, Rubro rubro, int tiempoEstimadoCocina, double precioVenta, double precioCosto, String receta) {
-        super(denominacion, descripcion, Url_Imagen, estadoArticulo, rubro);
+    public ArticuloManufacturado(String denominacion, String descripcion, String Url_Imagen, double precioVenta, Estado estadoArticulo, Rubro rubro, int tiempoEstimadoCocina, String receta) {
+        super(denominacion, descripcion, Url_Imagen, precioVenta, estadoArticulo, rubro);
         this.tiempoEstimadoCocina = tiempoEstimadoCocina;
-        this.precioVenta = precioVenta;
-        this.precioCosto = precioCosto;
         this.receta = receta;
+    }
+
+    public void calcularPrecioCosto(){
+        double precioCosto = 0;
+        for (DetalleArtManufacturado detalleArtManufacturado: detallesArtManufacturado) {
+            precioCosto += detalleArtManufacturado.getArticuloInsumo().getPrecioCompra() * detalleArtManufacturado.getCantidad();
+        }
+        this.precioCosto = precioCosto;
     }
 }

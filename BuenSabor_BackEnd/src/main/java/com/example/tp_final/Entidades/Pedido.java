@@ -28,7 +28,6 @@ public class Pedido extends Base {
 
     private LocalDateTime fechaPedido;
     private LocalTime horaEstimadaEntrega;
-    private double totalCosto;
     private double total;
 
     @NotNull
@@ -75,6 +74,15 @@ public class Pedido extends Base {
         }
         factura.setTotalFinal(this.total* factura.getDescuento());
         this.factura = factura;
+    }
+
+    public void calcularTotal() {
+        double Total = 0;
+        // Calcular el total del pedido con la suma de los subtotales de los detalles pedido
+        for (DetallePedido detalleP : detallesPedido) {
+            Total += detalleP.getSubtotal();
+        }
+        this.total= Total;
     }
 
 }

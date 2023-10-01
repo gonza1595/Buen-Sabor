@@ -23,6 +23,7 @@ public abstract class Articulo extends BaseWithDate {
     private String denominacion;
     private String descripcion;
     private String Url_Imagen;
+    private double precioVenta;
 
     @NotNull
     @Enumerated(EnumType.STRING)
