@@ -10,6 +10,7 @@ import java.time.LocalTime;
 @Entity
 @Table(name="Detalle_Pedido")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class DetallePedido extends Base {
@@ -22,14 +23,10 @@ public class DetallePedido extends Base {
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Articulo articulo;
 
-    //Relacion N a 1 con la clase Pedido
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Pedido pedido;
-
-    public DetallePedido(int cantidad, Articulo articulo, Pedido pedido) {
+    //Constructor
+    public DetallePedido(int cantidad, Articulo articulo) {
         this.cantidad = cantidad;
         this.articulo = articulo;
-        this.pedido = pedido;
         this.subtotal= calcularSubTotal();
     }
     //Metodos

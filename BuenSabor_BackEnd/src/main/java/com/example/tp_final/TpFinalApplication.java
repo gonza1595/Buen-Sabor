@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class TpFinalApplication {
@@ -26,6 +27,8 @@ public class TpFinalApplication {
     DomicilioRepository domicilioRepository;
     @Autowired
     ArticuloRepository articuloRepository;
+    @Autowired
+    ArticuloManufacturadoRepository articuloManufacturadoRepository;
     @Autowired
     RubroRepository rubroRepository;
     @Autowired
@@ -64,7 +67,7 @@ public class TpFinalApplication {
             usuarioRepository.save(empleado3);
 
             //Se recuperan clientes de db y se muestran sus datos
-            System.out.println("Clientes");
+            System.out.println("Clientes Registrados");
             Iterable<Cliente> clientesRecuperados = clienteRepository.findAll();
             for (Cliente clienteRecuperado: clientesRecuperados) {
                 System.out.println("ClienteId: "+ clienteRecuperado.getId());
@@ -76,7 +79,7 @@ public class TpFinalApplication {
             }
 
             //Se recuperan empleados de db y se muestran sus datos
-            System.out.println("Empleados");
+            System.out.println("Empleados Registrados");
             Iterable<Empleado> empleadosRecuperados = empleadoRepository.findAll();
             for (Empleado empleadoRecuperado: empleadosRecuperados) {
                 System.out.println("EmpleadoId: "+ empleadoRecuperado.getId());
@@ -141,47 +144,48 @@ public class TpFinalApplication {
             articuloRepository.save(articuloInsumo3);
             articuloRepository.save(articuloInsumo4);
 
-            ArticuloManufacturado articuloManufacturado1 = new ArticuloManufacturado("Pizza Mozzarella","descripcion..","urlImagen..",1500,Estado.Alta,rubroArtManufacturado1,25,"receta...");
-            DetalleArtManufacturado detalleArtManufacturado1 = new DetalleArtManufacturado(1,articuloManufacturado1,articuloInsumo3);
-            DetalleArtManufacturado detalleArtManufacturado2 = new DetalleArtManufacturado(2,articuloManufacturado1,articuloInsumo4);
+            DetalleArtManufacturado detalleArtManufacturado1 = new DetalleArtManufacturado(1,articuloInsumo3);
+            DetalleArtManufacturado detalleArtManufacturado2 = new DetalleArtManufacturado(2,articuloInsumo4);
+            List<DetalleArtManufacturado> detallesArtManufacturado = new ArrayList<>();
+            detallesArtManufacturado.add(detalleArtManufacturado1);
+            detallesArtManufacturado.add(detalleArtManufacturado2);
 
-            articuloManufacturado1.getDetallesArtManufacturado().add(detalleArtManufacturado1);
-            articuloManufacturado1.getDetallesArtManufacturado().add(detalleArtManufacturado2);
+            ArticuloManufacturado articuloManufacturado1 = new ArticuloManufacturado("Pizza Mozzarella","descripcion..","urlImagen..",1500,Estado.Alta,rubroArtManufacturado1,25,"receta...",detallesArtManufacturado);
             articuloRepository.save(articuloManufacturado1);
 
             //Se crea un pedido
-            Pedido pedido1 = new Pedido(Pagado.Si,EstadoPedido.A_Confirmar,TipoEnvio.retira,cliente1);
-            pedidoRepository.save(pedido1);
+            DetallePedido detallePedido1 = new DetallePedido(1,articuloManufacturado1);
+            DetallePedido detallePedido2 = new DetallePedido(2,articuloInsumo1);
+            List<DetallePedido> detallesPedido = new ArrayList<>();
+            detallesPedido.add(detallePedido1);
+            detallesPedido.add(detallePedido2);
 
-            DetallePedido detallePedido1 = new DetallePedido(1,articuloManufacturado1,pedido1);
-            DetallePedido detallePedido2 = new DetallePedido(2,articuloInsumo1,pedido1);
-            detallePedidoRepository.save(detallePedido1);
-            detallePedidoRepository.save(detallePedido2);
-
-            pedido1.getDetallesPedido().add(detallePedido1);
-            pedido1.getDetallesPedido().add(detallePedido2);
+            Pedido pedido1 = new Pedido(Pagado.Si,EstadoPedido.A_Confirmar,TipoEnvio.retira,cliente1,detallesPedido);
             pedidoRepository.save(pedido1);
 
             //Se elimina el cliente 3, eliminando tambien sus domicilios y pedidos asociados
             clienteRepository.deleteById(3L);
 
             //Se muestran datos del pedido 1
-            pedido1.calcularTotal();
-            System.out.println("Precio Total de pedido: "+ pedido1.getTotal());
+            Optional<Pedido> pedidoOptional = pedidoRepository.findById(1L);
+            Pedido pedidoRecuperado = pedidoOptional.get();
+            System.out.println("Pedido Id: "+pedidoRecuperado.getId());
+            System.out.println("Precio Total de pedido: $"+ pedidoRecuperado.getTotal());
             System.out.println("Detalles de Pedido");
-            for (DetallePedido detallePedido: pedido1.getDetallesPedido()) {
-                System.out.println("Nombre Articulo "+detallePedido.getArticulo().getDenominacion());
+            for (DetallePedido detallePedido: pedidoRecuperado.getDetallesPedido()) {
+                System.out.println("Nombre Articulo: "+detallePedido.getArticulo().getDenominacion());
                 System.out.println("Cantidad : "+detallePedido.getCantidad());
-                System.out.println("Precio por Unidad "+ detallePedido.getArticulo().getPrecioVenta());
+                System.out.println("Precio por Unidad $"+ detallePedido.getArticulo().getPrecioVenta());
                 System.out.println("----------------------------------");
             }
 
             //Se muestran datos del articulo Manufacturado 1
-            articuloManufacturado1.calcularPrecioCosto();
-            System.out.println("Nombre articulo Manufacturado: "+articuloManufacturado1.getDenominacion());
-            System.out.println("Costo Total: "+ articuloManufacturado1.getPrecioCosto());
+            Optional<ArticuloManufacturado> articuloManufacturadoOptional = articuloManufacturadoRepository.findById(5L);
+            ArticuloManufacturado articuloManufacturadoRecuperado = articuloManufacturadoOptional.get();
+            System.out.println("Nombre articulo Manufacturado: "+articuloManufacturadoRecuperado.getDenominacion());
+            System.out.println("Costo Total: "+ articuloManufacturadoRecuperado.getPrecioCosto());
             System.out.println("Detalles de articulo");
-            for (DetalleArtManufacturado detalleArtManufacturado: articuloManufacturado1.getDetallesArtManufacturado()) {
+            for (DetalleArtManufacturado detalleArtManufacturado: articuloManufacturadoRecuperado.getDetallesArtManufacturado()) {
                 System.out.println("Nombre Articulo Insumo: "+detalleArtManufacturado.getArticuloInsumo().getDenominacion());
                 System.out.println("Cantidad : "+detalleArtManufacturado.getCantidad());
                 System.out.println("Precio por Unidad: "+ detalleArtManufacturado.getArticuloInsumo().getPrecioCompra());

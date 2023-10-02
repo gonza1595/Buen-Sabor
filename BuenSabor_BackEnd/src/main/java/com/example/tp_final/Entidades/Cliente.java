@@ -12,8 +12,11 @@ import java.util.List;
 @Entity
 @Table(name="Cliente")
 @NoArgsConstructor
+@Setter
+@Getter
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class Cliente extends Usuario {
+    private String comentario;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Pedido> Pedidos = new ArrayList<>();

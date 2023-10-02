@@ -52,16 +52,18 @@ public class Pedido extends Base {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Factura factura;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    //Relacion 1 a N con detalle pedido
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<DetallePedido> detallesPedido = new ArrayList<>();
 
     //Constructor
-    public Pedido(Pagado pagado, EstadoPedido estadoPedido, TipoEnvio tipoEnvio, Cliente cliente) {
-        this.fechaPedido = LocalDateTime.now();
+    public Pedido(Pagado pagado, EstadoPedido estadoPedido, TipoEnvio tipoEnvio, Cliente cliente, List<DetallePedido> detallesPedido) {
         this.pagado = pagado;
         this.estadoPedido = estadoPedido;
         this.tipoEnvio = tipoEnvio;
         this.cliente = cliente;
+        this.detallesPedido = detallesPedido;
+        this.total = calcularTotal();
     }
 
     public void emitirFactura (FormaPago formaPago){
@@ -76,13 +78,13 @@ public class Pedido extends Base {
         this.factura = factura;
     }
 
-    public void calcularTotal() {
+    public double calcularTotal() {
         double Total = 0;
         // Calcular el total del pedido con la suma de los subtotales de los detalles pedido
         for (DetallePedido detalleP : detallesPedido) {
             Total += detalleP.getSubtotal();
         }
-        this.total= Total;
+        return Total;
     }
 
 }
