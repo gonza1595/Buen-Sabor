@@ -52,10 +52,10 @@ Interfaces de usuario principales del sistema
 Checkout / Proceso de Pago
 Al finalizar la selección de los platos (pizzas, empanadas, lomos, bebidas, etc.) el proceso de pago deberá contener al menos los siguientes pasos:
 
-- 1 Verificar que el cliente se encuentre logueado en la aplicación, caso contrario solicitarle que realice el login o en su defecto que se registre en el sistema si todavía no lo ha hecho.
-- 2 Forma de envío, en este paso el cliente debe seleccionar entre las opciones “Retiro en Local” o “Envió a Domicilio”, solo si selecciona esta última opción el sistema deberá solicitarle los datos del domicilio de envío (calle, número, localidad, etc), presentando inicialmente los datos precargados en la registración al sistema.
-- 3 Método de pago: Si en el paso anterior el cliente selecciono la forma de envío “Retiro en Local” se le presentarán las opciones de Pago, por ejemplo: “Efectivo”, “Mercado Pago”, etc..
-- 4 Fin del Checkout
+- 1. Verificar que el cliente se encuentre logueado en la aplicación, caso contrario solicitarle que realice el login o en su defecto que se registre en el sistema si todavía no lo ha hecho.
+- 2. Forma de envío, en este paso el cliente debe seleccionar entre las opciones “Retiro en Local” o “Envió a Domicilio”, solo si selecciona esta última opción el sistema deberá solicitarle los datos del domicilio de envío (calle, número, localidad, etc), presentando inicialmente los datos precargados en la registración al sistema.
+- 3. Método de pago: Si en el paso anterior el cliente selecciono la forma de envío “Retiro en Local” se le presentarán las opciones de Pago, por ejemplo: “Efectivo”, “Mercado Pago”, etc..
+- 4. Fin del Checkout
 
 Tecnologías para el desarrollo de la Aplicación
 PORTAL WEB
@@ -77,6 +77,7 @@ Desarrollado en React.
 - Podrán utilizarse herramientas y librerías relacionadas con la cátedra, con la aprobación de los docentes.
 
 Integrantes
-Aveiro Gonzalo
-Cayo Gonzalo
-Gonzalez Carlos
+
+- Aveiro Gonzalo
+- Cayo Gonzalo
+- Gonzalez Carlos
