@@ -1,0 +1,22 @@
+.buttonColor {
+    background-color: white !important;
+    border-radius: 8px;
+    border-color: #FFB20E !important;
+    }
+    
+    .login {
+        color: #FFB20E;
+        font-weight: bold;
+    }
+    
+    .paddingLoginCart {
+        padding-right: 15px;
+    }
+    
+    .heightUserLogo {
+        font-size: 21px ;
+    }
+    
+    .heightCart{
+        font-size: 30px ;
+    }
