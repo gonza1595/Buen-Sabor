@@ -1,0 +1,14 @@
+.sectionHeight {
+    height: max-content !important;
+   
+}
+.containerDetail {
+    border: 1px solid;
+    width: 1000px;
+    height: auto;
+}
+
+.fontSizeDescription {
+    font-size: 20px;
+}
+

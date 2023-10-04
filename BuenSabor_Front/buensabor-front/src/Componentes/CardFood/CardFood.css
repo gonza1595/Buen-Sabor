@@ -1,0 +1,13 @@
+.borderCard {
+    border-radius: 32px !important;
+    border-color: black !important;
+    
+}
+
+.imageBorder {
+    border-top-left-radius: 32px; 
+    border-top-right-radius: 32px;
+}
+  
+
+  
