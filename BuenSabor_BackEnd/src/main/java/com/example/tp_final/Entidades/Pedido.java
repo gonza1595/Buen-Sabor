@@ -67,14 +67,20 @@ public class Pedido extends Base {
     }
 
     public void emitirFactura (FormaPago formaPago){
-        Factura factura = new Factura(formaPago);
+        List<DetalleFactura> detallesFactura = new ArrayList<>();
+        for (DetallePedido detallePedido:detallesPedido) {
+            DetalleFactura detalleFactura = new DetalleFactura();
+            detalleFactura.setCantidad(detallePedido.getCantidad());
+            detalleFactura.setArticulo(detallePedido.getArticulo());
+        }
+        Factura factura = new Factura(formaPago,detallesFactura);
         //Si el tipo envio es retira entonces se aplica un 10% de descuento
         if (this.tipoEnvio.name()=="retira") {
-            factura.setDescuento(0.9);
+            factura.setDescuento(0.1);
         }else {
-            factura.setDescuento(1.0);
+            factura.setDescuento(0);
         }
-        factura.setTotalFinal(this.total* factura.getDescuento());
+        factura.setTotalFinal(this.total -this.total * factura.getDescuento());
         this.factura = factura;
     }
 

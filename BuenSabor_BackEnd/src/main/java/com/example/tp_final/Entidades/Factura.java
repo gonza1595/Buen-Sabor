@@ -10,6 +10,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Factura")
@@ -26,10 +28,15 @@ public class Factura extends Base {
     @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
 
+    //Relacion 1 a N con detalle pedido
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<DetalleFactura> detallesFactura = new ArrayList<>();
 
     //Constructor
-    public Factura(FormaPago formaPago) {
+
+    public Factura(FormaPago formaPago, List<DetalleFactura> detallesFactura) {
         this.fechaFacturacion = LocalDate.now();
         this.formaPago = formaPago;
+        this.detallesFactura = detallesFactura;
     }
 }

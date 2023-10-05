@@ -192,6 +192,8 @@ public class TpFinalApplication {
                 System.out.println("Unidad Medida: "+ detalleArtManufacturado.getArticuloInsumo().getUnidadMedida().getDenominacion());
                 System.out.println("----------------------------------");
             }
+            pedido1.emitirFactura(FormaPago.efectivo);
+            System.out.println(pedido1.getFactura().getTotalFinal());
         };
     }
 }
