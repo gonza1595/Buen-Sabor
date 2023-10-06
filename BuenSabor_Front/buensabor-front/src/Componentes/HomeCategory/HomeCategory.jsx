@@ -12,13 +12,12 @@ export default function HomeCategory() {
   const [searchTerm, setSearchTerm] = useState("");
   const [nameSearch, setNameSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [categoryFood, setCategoryFood] = useState("");
 
   const { category } = useParams();
 
-  useEffect(() => {
-    setCategoryFood(category);
-  }, [category]);
+  localStorage.setItem("category", category);
+
+  const categoryDetail = food.comidas.filter((e) => e.categoria === category);
 
   // pagination
   const showPerPage = 8;
@@ -27,10 +26,10 @@ export default function HomeCategory() {
 
   //searchBar filter
   const filteredFood = nameSearch
-    ? categoryFood?.filter((comida) =>
+    ? categoryDetail?.filter((comida) =>
         comida.nombre.toLowerCase().includes(nameSearch.toLowerCase())
       )
-    : categoryFood;
+    : categoryDetail;
 
   const foodCategoryToShow = filteredFood?.slice(firstOnPage, lastOnPage);
 
@@ -63,16 +62,27 @@ export default function HomeCategory() {
         <div>
           <hr className="hr" />
           <div className="d-flex justify-content-center">
-            <Link to={"/home/Hamburguesas"}>
-              <h4 className="px-5">Hamburguesas</h4>
+            <Link className="text-decoration-none" to={"/home/Hamburguesas"}>
+              <h5 className="px-4 text-dark">Hamburguesas</h5>
             </Link>
-            <Link to={"/home/Lomos"}>
-              <h4 className="px-5">Lomos</h4>
+            <Link className="text-decoration-none" to={"/home/Lomos"}>
+              <h5 className="px-4 text-dark">Lomos</h5>
             </Link>
-            <h4 className="px-5">Papas Fritas</h4>
-            <h4 className="px-5">Empanadas</h4>
-            <h4 className="px-5">Pizzas</h4>
-            <h4 className="px-5">Bebidas</h4>
+            <Link className="text-decoration-none" to={"/home/Papas Fritas"}>
+              <h5 className="px-4 text-dark">Papas Fritas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Empanadas"}>
+              <h5 className="px-4 text-dark">Empanadas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Pizzas"}>
+              <h5 className="px-4 text-dark">Pizzas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Bebidas"}>
+              <h5 className="px-4 text-dark">Bebidas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home"}>
+              <h5 className="px-4 text-dark">Todos los productos</h5>
+            </Link>
           </div>
           <hr className="hr" />
           <article className="pt-3 pb-2 d-flex justify-content-center">
@@ -87,113 +97,21 @@ export default function HomeCategory() {
       </article>
       <article>
         <div className="row">
-          {categoryFood ? (
-            foodCategoryToShow.map((comida, index) => {
-              if (comida.categoria === "Hamburguesas") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else if (comida.categoria === "Lomos") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else if (comida.categoria === "Papas Fritas") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else if (comida.categoria === "Empanadas") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else if (comida.categoria === "Pizzas") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else if (comida.categoria === "Bebidas") {
-                return (
-                  <div
-                    key={comida.id}
-                    className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                  >
-                    <CardFood
-                      id={comida.id}
-                      imagen={comida.imagen}
-                      nombre={comida.nombre}
-                      descripcion={comida.descripcion}
-                      precio={comida.precio}
-                    />
-                  </div>
-                );
-              } else {
-                <div
-                  key={comida.id}
-                  className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
-                >
-                  <CardFood
-                    id={comida.id}
-                    imagen={comida.imagen}
-                    nombre={comida.nombre}
-                    descripcion={comida.descripcion}
-                    precio={comida.precio}
-                  />
-                </div>;
-              }
-            })
+          {foodCategoryToShow && foodCategoryToShow.length > 0 ? (
+            foodCategoryToShow.map((comida, index) => (
+              <div
+                key={comida.id}
+                className="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3 p-4"
+              >
+                <CardFood
+                  id={comida.id}
+                  imagen={comida.imagen}
+                  nombre={comida.nombre}
+                  descripcion={comida.descripcion}
+                  precio={comida.precio}
+                />
+              </div>
+            ))
           ) : (
             <div className="pt-5 pb-5">
               <div className="container incorrectName-container">

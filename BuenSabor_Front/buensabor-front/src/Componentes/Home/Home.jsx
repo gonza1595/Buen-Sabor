@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import food from "../../Data/comidas.json";
 import CardFood from "../CardFood/CardFood";
 import Navbar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
-import HomeCategory from "../HomeCategory/HomeCategory";
 import "./Home.css";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [nameSearch, setNameSearch] = useState("");
   const [page, setPage] = useState(1);
-
-  const { category } = useParams();
 
   // pagination
   const showPerPage = 8;
@@ -59,16 +56,27 @@ export default function Home() {
         <div>
           <hr className="hr" />
           <div className="d-flex justify-content-center">
-            <Link to={"/home/Hamburguesas"}>
-              <h4 className="px-5">Hamburguesas</h4>
+            <Link className="text-decoration-none" to={"/home/Hamburguesas"}>
+              <h5 className="px-4 text-dark">Hamburguesas</h5>
             </Link>
-            <Link to={"/home/Lomos"}>
-              <h4 className="px-5">Lomos</h4>
+            <Link className="text-decoration-none" to={"/home/Lomos"}>
+              <h5 className="px-4 text-dark">Lomos</h5>
             </Link>
-            <h4 className="px-5">Papas Fritas</h4>
-            <h4 className="px-5">Empanadas</h4>
-            <h4 className="px-5">Pizzas</h4>
-            <h4 className="px-5">Bebidas</h4>
+            <Link className="text-decoration-none" to={"/home/Papas Fritas"}>
+              <h5 className="px-4 text-dark">Papas Fritas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Empanadas"}>
+              <h5 className="px-4 text-dark">Empanadas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Pizzas"}>
+              <h5 className="px-4 text-dark">Pizzas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home/Bebidas"}>
+              <h5 className="px-4 text-dark">Bebidas</h5>
+            </Link>
+            <Link className="text-decoration-none" to={"/home"}>
+              <h5 className="px-4 text-dark">Todos los productos</h5>
+            </Link>
           </div>
           <hr className="hr" />
           <article className="pt-3 pb-2 d-flex justify-content-center">
