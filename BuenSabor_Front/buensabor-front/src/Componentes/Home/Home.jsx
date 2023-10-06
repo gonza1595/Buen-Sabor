@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import food from "../../Data/comidas.json";
 import CardFood from "../CardFood/CardFood";
 import Navbar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
+import HomeCategory from "../HomeCategory/HomeCategory";
 import "./Home.css";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [nameSearch, setNameSearch] = useState("");
   const [page, setPage] = useState(1);
+
+  const { category } = useParams();
 
   // pagination
   const showPerPage = 8;
@@ -55,8 +59,12 @@ export default function Home() {
         <div>
           <hr className="hr" />
           <div className="d-flex justify-content-center">
-            <h4 className="px-5">Hamburguesas</h4>
-            <h4 className="px-5">Lomos</h4>
+            <Link to={"/home/Hamburguesas"}>
+              <h4 className="px-5">Hamburguesas</h4>
+            </Link>
+            <Link to={"/home/Lomos"}>
+              <h4 className="px-5">Lomos</h4>
+            </Link>
             <h4 className="px-5">Papas Fritas</h4>
             <h4 className="px-5">Empanadas</h4>
             <h4 className="px-5">Pizzas</h4>

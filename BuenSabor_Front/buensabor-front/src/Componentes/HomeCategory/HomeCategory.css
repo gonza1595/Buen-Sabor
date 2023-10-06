@@ -1,0 +1,49 @@
+.backGroundImage {
+    background-image: url("../Images/background\ buen\ sabor.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+}
+
+.colorText {
+    color: #FFB20E;
+    padding-left: 10px;
+    font-size: 55px;
+}
+
+.fontSize {
+    font-size: 55px;
+}
+
+.buttonStyle {
+    background-color: #FFB20E;
+    color: white;
+    border-color: #FFB20E;
+    border-radius: 4px;
+    font-weight: bolder !important;
+    font-size: 25px;
+}
+
+.incorrectName-container {
+      border-radius: 5px;
+      padding: 50px;
+      text-align: center;
+    
+    }
+    .incorrectName-container img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 50px;
+      }
+    
+      .incorrectName-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding-top: 25px;
+      }
+      
+      .incorrectName-description {
+        font-size: 16px;
+        line-height: 1.5;
+      }
