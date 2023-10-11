@@ -3,6 +3,7 @@ import Home from "./Componentes/Home/Home";
 import FoodDetail from "./Componentes/FoodDetail/FoodDetail";
 import HomeCategory from "./Componentes/HomeCategory/HomeCategory";
 import FormLogin from "./Componentes/FormLogin/FormLogin";
+import FormRegister from "./Componentes/FormRegister/FormRegister";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/home/food/:id" element={<FoodDetail />} />
         <Route path="/home/:category" element={<HomeCategory />} />
         <Route path="/home/login" element={<FormLogin />} />
+        <Route path="/home/register" element={<FormRegister />} />
       </Routes>
     </div>
   );

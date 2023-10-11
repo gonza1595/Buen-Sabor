@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../../Images/imageForm.jpg";
 import { GoogleLogin } from "@react-oauth/google";
+import { Link } from "react-router-dom";
 import "./FormLogin.css";
 
 export default function FormLogin() {
@@ -51,9 +52,11 @@ export default function FormLogin() {
                         <p className="mb-0 me-2 text-muted">
                           ¿No tienes cuenta?
                         </p>
-                        <a className="text-dark fw-bolder" href="#!">
-                          Registrate
-                        </a>
+                        <Link to={"/home/register"}>
+                          <a className="text-dark fw-bolder" href="#!">
+                            Registrate
+                          </a>
+                        </Link>
                       </div>
                       <div className="line-with-text pb-3">
                         <span className="line"></span>
