@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../../Images/imageForm.jpg";
+import { GoogleLogin } from "@react-oauth/google";
 import "./FormLogin.css";
 
 export default function FormLogin() {
@@ -47,13 +48,27 @@ export default function FormLogin() {
                         </button>
                       </div>
                       <div className="d-flex align-items-center pb-4">
-                        <p className="mb-0 me-2">¿No tienes cuenta?</p>
+                        <p className="mb-0 me-2 text-muted">
+                          ¿No tienes cuenta?
+                        </p>
                         <a className="text-dark fw-bolder" href="#!">
                           Registrate
                         </a>
                       </div>
-                      <div className="text-center">
-                        <p>Inicia sesion con</p>
+                      <div className="line-with-text pb-3">
+                        <span className="line"></span>
+                        <span className="text">Inicia Sesión con</span>
+                        <span className="line"></span>
+                      </div>
+                      <div className="d-flex justify-content-center">
+                        <GoogleLogin
+                          onSuccess={(credentialResponse) => {
+                            console.log(credentialResponse);
+                          }}
+                          onError={() => {
+                            console.log("Login Failed");
+                          }}
+                        />
                       </div>
                     </form>
                   </div>

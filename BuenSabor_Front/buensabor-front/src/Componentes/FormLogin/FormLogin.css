@@ -6,3 +6,18 @@
     padding-top: 12px !important;
     padding-bottom: 12px !important;
 }
+
+.line-with-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .line {
+    flex: 1;
+    border-bottom: 1px solid #000; 
+  }
+  
+  .text {
+    padding: 0 10px;
+  }
+  
