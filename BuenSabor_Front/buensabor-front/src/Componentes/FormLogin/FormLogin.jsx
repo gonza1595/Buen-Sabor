@@ -10,7 +10,7 @@ export default function FormLogin() {
           <div className="col-xl-10">
             <div>
               <div className="row d-flex justify-content-center align-items-center">
-                <div className="col-lg-6">
+                <div className="col-lg-5">
                   <div className="card-body p-md-5 mx-md-4">
                     <div className="text-center">
                       <h1 className="mt-1 pb-1 fw-bold">Inicia Sesión</h1>
@@ -46,12 +46,14 @@ export default function FormLogin() {
                           Aceptar
                         </button>
                       </div>
-
                       <div className="d-flex align-items-center pb-4">
                         <p className="mb-0 me-2">¿No tienes cuenta?</p>
                         <a className="text-dark fw-bolder" href="#!">
                           Registrate
                         </a>
+                      </div>
+                      <div className="text-center">
+                        <p>Inicia sesion con</p>
                       </div>
                     </form>
                   </div>
