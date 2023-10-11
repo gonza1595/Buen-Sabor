@@ -100,7 +100,7 @@ export default function FormRegister() {
                       </div>
                       <div className="line-with-text pb-3">
                         <span className="line"></span>
-                        <span className="text">Inicia Sesión con</span>
+                        <span className="text">o</span>
                         <span className="line"></span>
                       </div>
                       <div className="d-flex justify-content-center">
