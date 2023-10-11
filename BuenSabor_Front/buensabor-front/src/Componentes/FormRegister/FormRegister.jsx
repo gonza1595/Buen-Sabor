@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import image from "../../Images/imageForm.jpg";
 import { GoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
 import "./FormRegister.css";
 
 export default function FormRegister() {
@@ -116,13 +114,15 @@ export default function FormRegister() {
                     </form>
                   </div>
                 </div>
-                <div className="col-lg-6 ">
-                  <img
-                    clasName="img-fluid"
-                    src={image}
-                    alt="Cargando.."
-                    style={{ width: "100%", height: "700px" }}
-                  />
+                <div className="col-lg-6 backGroundImageRegister">
+                  <div>
+                    <h1 className="Text">
+                      Registrate para ordenar lo mejor en comidas
+                    </h1>
+                    <h4 className="pt-4 text-white">
+                      Solo lo mejor en tu mesa
+                    </h4>
+                  </div>
                 </div>
               </div>
             </div>
