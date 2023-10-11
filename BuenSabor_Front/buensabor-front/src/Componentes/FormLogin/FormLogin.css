@@ -1,8 +1,8 @@
 .buttonLoggin {
-    color: white;
+    color: white !important;
     background-color: #FFB20E !important;
     border-color: #FFB20E !important;
-    border-radius: 14px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    border-radius: 14px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
 }
