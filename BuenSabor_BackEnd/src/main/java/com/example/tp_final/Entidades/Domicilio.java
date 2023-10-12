@@ -17,8 +17,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Domicilio implements Serializable {
-    @Id
+public class Domicilio extends Base {
+
     private String numero;
     private String calle;
     private String codigoPostal;

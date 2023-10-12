@@ -2,8 +2,7 @@ package com.example.tp_final;
 
 import com.example.tp_final.Entidades.*;
 import com.example.tp_final.Enumeraciones.*;
-import com.example.tp_final.Repositorios.*;
-import lombok.Setter;
+import com.example.tp_final.Repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -45,7 +44,7 @@ public class TpFinalApplication {
     @Bean
     public CommandLineRunner run() {
         return (args) -> {
-
+            /*
             //Se crean 3 clientes
             Cliente cliente1 = new Cliente("Dalia", "Adam", "123456789","DaliaAdam@gmail.com","password", Estado.Alta);
             Cliente cliente2 = new Cliente("Trisha", "Gee", "123456789","TrishaGee@gmail.com","password", Estado.Alta);
@@ -57,7 +56,7 @@ public class TpFinalApplication {
             usuarioRepository.save(cliente3);
 
             //Se crean los empleados
-            Empleado empleado1 = new Empleado("Matias","Morales","2612463645","MatiasMorales@gmail.com","password",Estado.Alta, Rol.CAJERO);
+            Empleado empleado1 = new Empleado("Matias","Morales","2612463645","MatiasMorales@gmail.com","password", Estado.Alta, Rol.CAJERO);
             Empleado empleado2 = new Empleado("Juan","Rodriguez","2616585321","JuanRodriguez@gmail.com","password",Estado.Alta, Rol.COCINERO);
             Empleado empleado3 = new Empleado("Martin","Dominguez","2616987523","MartinDominguez@gmail.com","password",Estado.Alta, Rol.REPARTIDOR);
 
@@ -160,7 +159,7 @@ public class TpFinalApplication {
             detallesPedido.add(detallePedido1);
             detallesPedido.add(detallePedido2);
 
-            Pedido pedido1 = new Pedido(Pagado.Si,EstadoPedido.A_Confirmar,TipoEnvio.retira,cliente1,detallesPedido);
+            Pedido pedido1 = new Pedido(Pagado.Si, EstadoPedido.A_Confirmar,TipoEnvio.retira,cliente1,detallesPedido);
             pedidoRepository.save(pedido1);
 
             //Se elimina el cliente 3, eliminando tambien sus domicilios y pedidos asociados
@@ -174,7 +173,7 @@ public class TpFinalApplication {
             System.out.println("Detalles de Pedido");
             for (DetallePedido detallePedido: pedidoRecuperado.getDetallesPedido()) {
                 System.out.println("Nombre Articulo: "+detallePedido.getArticulo().getDenominacion());
-                System.out.println("Cantidad : "+detallePedido.getCantidad());
+                 System.out.println("Cantidad : "+detallePedido.getCantidad());
                 System.out.println("Precio por Unidad $"+ detallePedido.getArticulo().getPrecioVenta());
                 System.out.println("----------------------------------");
             }
@@ -193,7 +192,7 @@ public class TpFinalApplication {
                 System.out.println("----------------------------------");
             }
             pedido1.emitirFactura(FormaPago.efectivo);
-            System.out.println(pedido1.getFactura().getTotalFinal());
+            System.out.println(pedido1.getFactura().getTotalFinal()); */
         };
     }
 }
