@@ -13,7 +13,7 @@ import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
-@Table(name="Rubro_Art_Manufacturado")
+@Table(name="Rubro")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

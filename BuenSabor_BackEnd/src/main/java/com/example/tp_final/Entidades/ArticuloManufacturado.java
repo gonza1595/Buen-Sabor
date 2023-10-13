@@ -31,9 +31,14 @@ public class ArticuloManufacturado extends Articulo {
     public ArticuloManufacturado(String denominacion, String descripcion, String Url_Imagen, double precioVenta, Estado estadoArticulo, Rubro rubro, int tiempoEstimadoCocina, String receta, List<DetalleArtManufacturado> detallesArtManufacturado) {
         super(denominacion, descripcion, Url_Imagen, precioVenta, estadoArticulo, rubro);
         this.tiempoEstimadoCocina = tiempoEstimadoCocina;
-        this.precioCosto = calcularPrecioCosto();
         this.receta = receta;
         this.detallesArtManufacturado = detallesArtManufacturado;
+    }
+
+
+    @PrePersist
+    public void prePersist() {
+        this.precioCosto = calcularPrecioCosto();
     }
 
     public double calcularPrecioCosto(){
