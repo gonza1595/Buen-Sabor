@@ -38,7 +38,7 @@ export default function FormLogin() {
                       <div className="position-relative pb-5">
                         <a
                           className="position-absolute top-0 end-0 text-dark fw-bolder"
-                          href="#!"
+                          href="/home/login/resetPass"
                         >
                           ¿Olvidaste tu contraseña?
                         </a>
