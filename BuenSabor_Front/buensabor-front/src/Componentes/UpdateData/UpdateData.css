@@ -1,0 +1,13 @@
+.buttonCancelar {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    border-color: #000000 !important;
+    border-radius: 14px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+
+.backgroundColorData {
+    background-color: #FEEFD0;
+    border-color: #FEEFD0 !important;
+}

@@ -7,6 +7,8 @@ import FormRegister from "./Componentes/FormRegister/FormRegister";
 import ResetPassword from "./Componentes/ResetPassword/ResetPassword";
 import ResetPasswordCode from "./Componentes/ResetPassword/ResetPasswordCode";
 import ResetPasswordCodeChange from "./Componentes/ResetPassword/ResetPasswordChange";
+import UpdateData from "./Componentes/UpdateData/UpdateData";
+import UpdateDataPass from "./Componentes/UpdateData/UpdataDataPass";
 
 function App() {
   return (
@@ -25,6 +27,11 @@ function App() {
         <Route
           path="/home/login/resetPass/change"
           element={<ResetPasswordCodeChange />}
+        />
+        <Route path="/home/profile/updateData" element={<UpdateData />} />
+        <Route
+          path="/home/profile/updateData/resetPassword"
+          element={<UpdateDataPass />}
         />
       </Routes>
     </div>
