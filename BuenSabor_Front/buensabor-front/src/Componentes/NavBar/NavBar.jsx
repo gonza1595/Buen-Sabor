@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "../../Images/Buen sabor logo 1.png";
-import LoginAndCart from "../LoginAndCart/LoginAndCart";
+import Login from "../Login/Login";
+import Cart from "../Cart/Cart";
+import Profile from "../Profile/Profile";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -10,10 +12,16 @@ export default function Navbar() {
         <Link to={"/home"}>
           <img src={logo} alt="Cargando.." />
         </Link>
-        <ul className="navbar-nav">
-          <li className="nav-item d-flex align-items-center"></li>
-          <li className="nav-item px-5">
-            <LoginAndCart />
+
+        <ul className="navbar-nav d-flex align-items-center px-5">
+          <li className="nav-item">
+            <Login />
+          </li>
+          <li className="nav-item">
+            <Cart />
+          </li>
+          <li className="nav-item px-3">
+            <Profile />
           </li>
         </ul>
       </div>
