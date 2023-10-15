@@ -9,6 +9,7 @@ import ResetPasswordCode from "./Componentes/ResetPassword/ResetPasswordCode";
 import ResetPasswordCodeChange from "./Componentes/ResetPassword/ResetPasswordChange";
 import UpdateData from "./Componentes/UpdateData/UpdateData";
 import UpdateDataPass from "./Componentes/UpdateData/UpdataDataPass";
+import Orders from "./Componentes/Orders/Orders";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           path="/home/profile/updateData/resetPassword"
           element={<UpdateDataPass />}
         />
+        <Route path="/home/profile/myOrders" element={<Orders />} />
       </Routes>
     </div>
   );
