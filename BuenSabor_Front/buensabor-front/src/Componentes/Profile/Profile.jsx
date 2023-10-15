@@ -19,7 +19,7 @@ export default function Profile() {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href="/home/profile/myOrders">
             Mis Pedidos
           </a>
         </li>

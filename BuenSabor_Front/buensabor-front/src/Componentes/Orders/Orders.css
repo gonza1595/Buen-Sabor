@@ -1,0 +1,14 @@
+.backGround {
+    background-color: #B9B9B9 !important;
+}
+
+.buttonStyle {
+    background-color: #FFB20E !important;
+    border-radius: 12px;
+    border-color: #FFB20E !important;
+    font-size: 15px;
+}
+
+.padding{
+padding-top: 80px;
+}
