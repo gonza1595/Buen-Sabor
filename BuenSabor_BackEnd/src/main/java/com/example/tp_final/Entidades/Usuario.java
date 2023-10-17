@@ -34,9 +34,6 @@ public abstract class Usuario extends BaseWithDate implements Serializable {
     @Enumerated(EnumType.STRING)
     private Estado estadoUsuario;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Domicilio> domicilios = new ArrayList<>();
-
     //Constructor
     public Usuario(String nombre, String apellido, String telefono, String email, String password, Estado estadoUsuario) {
         this.nombre = nombre;

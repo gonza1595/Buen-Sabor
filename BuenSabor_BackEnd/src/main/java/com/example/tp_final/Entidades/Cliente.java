@@ -18,8 +18,8 @@ import java.util.List;
 public class Cliente extends Usuario {
     private String comentario;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Pedido> Pedidos = new ArrayList<>();
+    //@OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    //private List<Pedido> Pedidos = new ArrayList<>();
 
     //Constructor
     public Cliente(String nombre, String apellido, String telefono, String email, String password, Estado estadoUsuario) {
