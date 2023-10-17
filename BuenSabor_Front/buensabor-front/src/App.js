@@ -10,6 +10,7 @@ import ResetPasswordCodeChange from "./Componentes/ResetPassword/ResetPasswordCh
 import UpdateData from "./Componentes/UpdateData/UpdateData";
 import UpdateDataPass from "./Componentes/UpdateData/UpdataDataPass";
 import Orders from "./Componentes/Orders/Orders";
+import CartSection from "./Componentes/Cart/CartSection";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           element={<UpdateDataPass />}
         />
         <Route path="/home/profile/myOrders" element={<Orders />} />
+        <Route path="/home/cart" element={<CartSection />} />
       </Routes>
     </div>
   );

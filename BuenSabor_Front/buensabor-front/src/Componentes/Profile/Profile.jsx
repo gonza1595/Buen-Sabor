@@ -24,7 +24,7 @@ export default function Profile() {
           </a>
         </li>
         <li>
-          <a className="dropdown-item" href="#">
+          <a className="dropdown-item" href="/home/cart">
             Mi Carrito
           </a>
         </li>
