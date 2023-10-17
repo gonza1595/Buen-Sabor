@@ -107,8 +107,11 @@ export default function UpdateData() {
                 <p className="mb-0 me-2 text-muted">
                   ¿Quieres cambiar tu contraseña?
                 </p>
-                <Link to={"/home/profile/updateData/resetPassword"}>
-                  <a className="text-dark fw-bolder">Haga click aqui</a>
+                <Link
+                  to={"/home/profile/updateData/resetPassword"}
+                  className="text-dark"
+                >
+                  <p className="text-dark fw-bolder">Haga click aqui</p>
                 </Link>
               </div>
             </div>
