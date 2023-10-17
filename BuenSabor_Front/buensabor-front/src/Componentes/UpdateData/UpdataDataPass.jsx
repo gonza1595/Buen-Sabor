@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 export default function UpdateDataPass() {
+  const [currentShowPassword, setCurrentShowPassword] = useState(false);
   const [showPassword, setshowPassword] = useState(false);
   const [showPasswordTwo, setshowPasswordTwo] = useState(false);
 
+  const currentTogglePasswordVisibility = () => {
+    setCurrentShowPassword(!currentShowPassword);
+  };
   const togglePasswordVisibility = () => {
     setshowPassword(!showPassword);
   };
@@ -24,16 +28,16 @@ export default function UpdateDataPass() {
           <form>
             <div className="form-outline mb-4 position-relative">
               <input
-                type={showPassword ? "text" : "password"}
+                type={currentShowPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="*******"
               />
               <div
                 className="position-absolute end-0 top-50 translate-middle-y px-3"
                 style={{ cursor: "pointer" }}
-                onClick={togglePasswordVisibility}
+                onClick={currentTogglePasswordVisibility}
               >
-                {showPassword ? (
+                {currentShowPassword ? (
                   <i class="bi bi-eye-slash"></i>
                 ) : (
                   <i class="bi bi-eye"></i>

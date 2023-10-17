@@ -93,11 +93,13 @@ export default function UpdateData() {
                     Guardar
                   </button>
                 </div>
-                <div className="text-center d-grid gap-2 col-12 mx-auto">
-                  <button className="btn buttonCancelar mb-3" type="button">
-                    Cancelar
-                  </button>
-                </div>
+                <Link to={"/home"} className="text-decoration-none">
+                  <div className="text-center d-grid gap-2 col-12 mx-auto">
+                    <button className="btn buttonCancelar mb-3" type="button">
+                      Cancelar
+                    </button>
+                  </div>
+                </Link>
               </div>
             </form>
             <div className="mx-3">
