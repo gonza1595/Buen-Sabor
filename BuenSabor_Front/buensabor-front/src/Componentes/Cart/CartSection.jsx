@@ -102,7 +102,7 @@ export default function CartSection() {
                       style={{ width: "30%", height: "auto" }}
                     />
                     <div className="px-4">
-                      <h5>{food.nombre}</h5>
+                      <h5 className="fw-bold">{food.nombre}</h5>
                       <p>{food.descripcion}</p>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function CartSection() {
                   </div>
                 </div>
                 <div className="col-2">
-                  <h5 className="text-center">
+                  <h5 className="text-center fw-bold">
                     $ {addPrice[food.id] || food.precio}
                   </h5>
                 </div>
@@ -141,6 +141,20 @@ export default function CartSection() {
       </div>
       <div class="line"></div>
       <div>
+        <div className="row d-flex justify-content-center pb-5">
+          <div className="col-10">
+            <div className="row d-flex justify-content-center position-relative">
+              <div className="col-4 border border-1 position-absolute top-50 end-0 translate-middle-y">
+                <div>
+                  <p>articulos </p>
+                  <h4 className="fw-bold">Total</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="pt-5">
         <Footer />
       </div>
     </section>
