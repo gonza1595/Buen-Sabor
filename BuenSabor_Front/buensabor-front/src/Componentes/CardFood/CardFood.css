@@ -4,10 +4,35 @@
     
 }
 
-.imageBorder {
+.imageBorderCard {
     border-top-left-radius: 32px; 
     border-top-right-radius: 32px;
 }
   
+.circle {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: rgb(252, 252, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    margin-right: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .imageBorder:hover .circle {
+    opacity: 1;
+    border: 1px solid black;
+  }
+
+  .circle:hover {
+    opacity: 1 !important;
+    border: 1px solid black;
+  }
 
   

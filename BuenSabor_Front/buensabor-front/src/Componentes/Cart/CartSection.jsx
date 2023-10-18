@@ -1,5 +1,4 @@
 import React from "react";
-import food from "../../Data/comidas.json";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 
