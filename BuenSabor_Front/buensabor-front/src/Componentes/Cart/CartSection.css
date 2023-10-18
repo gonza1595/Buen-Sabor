@@ -1,0 +1,7 @@
+.line {
+    background-color: #000; /* Color de fondo de la línea */
+    height: 2px; /* Grosor de la línea */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    margin-bottom: 50px !important;
+  }
+  

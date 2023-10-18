@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import food from "../../Data/comidas.json";
+import "./CartSection.css";
 
 export default function CartSection() {
   const foodInTheCart = JSON.parse(localStorage.getItem("foodInTheCart")) || [];
@@ -138,6 +139,7 @@ export default function CartSection() {
           ))}
         </div>
       </div>
+      <div class="line"></div>
       <div>
         <Footer />
       </div>
