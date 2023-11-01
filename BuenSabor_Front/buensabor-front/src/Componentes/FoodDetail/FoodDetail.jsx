@@ -21,7 +21,10 @@ export default function FoodDetail() {
           <div className="containerDetail">
             {foodDetail.map((comida) => (
               <div className="row">
-                <div key={comida.id} className="col-xxl-4">
+                <div
+                  key={comida.id}
+                  className="col-xxl-4 col-xl-4 col-lg-4 col-md-4"
+                >
                   <img
                     src={comida.imagen}
                     alt="Cargando..."
@@ -30,7 +33,7 @@ export default function FoodDetail() {
                 </div>
                 <div
                   key={comida.id}
-                  className="row align-items-center col-xxl-8"
+                  className="row align-items-center col-xxl-8 col-xl-8 col-lg-8 col-md-8"
                 >
                   <h1>{comida.nombre}</h1>
                   <p className="card-text fontSizeDescription">
