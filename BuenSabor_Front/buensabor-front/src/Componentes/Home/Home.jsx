@@ -20,8 +20,6 @@ export default function Home() {
     dispatch(getArticles());
   }, []);
 
-  console.log(articleState.data);
-
   // pagination
   const showPerPage = 8;
   const lastOnPage = page * showPerPage;
