@@ -1,5 +1,6 @@
 const initialState = {
-  clients: [],
+  client: [],
+  article: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -7,7 +8,12 @@ function rootReducer(state = initialState, action) {
     case "GET_CLIENT":
       return {
         ...state,
-        clients: action.payload,
+        client: action.payload,
+      };
+    case "GET_ARTICLE":
+      return {
+        ...state,
+        article: action.payload,
       };
     default:
       return state;

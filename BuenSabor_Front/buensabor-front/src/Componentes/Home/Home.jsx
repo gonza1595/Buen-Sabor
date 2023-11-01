@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import food from "../../Data/comidas.json";
+import { useDispatch, useSelector } from "react-redux";
+import { getArticles } from "../../Redux/Actions";
 import CardFood from "../CardFood/CardFood";
 import Navbar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
@@ -9,9 +10,17 @@ import SearchBar from "../SearchBar/SearchBar";
 import "./Home.css";
 
 export default function Home() {
+  const articleState = useSelector((state) => state.article);
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [nameSearch, setNameSearch] = useState("");
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    dispatch(getArticles());
+  }, []);
+
+  console.log(articleState.data);
 
   // pagination
   const showPerPage = 8;
@@ -20,10 +29,10 @@ export default function Home() {
 
   //searchBar filter
   const filteredFood = nameSearch
-    ? food.comidas?.filter((comida) =>
+    ? articleState.data?.filter((comida) =>
         comida.nombre.toLowerCase().includes(nameSearch.toLowerCase())
       )
-    : food.comidas;
+    : articleState.data;
 
   const foodToShow = filteredFood?.slice(firstOnPage, lastOnPage);
 
@@ -99,10 +108,10 @@ export default function Home() {
               >
                 <CardFood
                   id={comida.id}
-                  imagen={comida.imagen}
-                  nombre={comida.nombre}
+                  imagen={comida.url_Imagen}
+                  nombre={comida.denominacion}
                   descripcion={comida.descripcion}
-                  precio={comida.precio}
+                  precio={comida.precioVenta}
                 />
               </div>
             ))
