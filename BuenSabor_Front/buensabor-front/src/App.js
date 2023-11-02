@@ -11,6 +11,7 @@ import UpdateData from "./Componentes/UpdateData/UpdateData";
 import UpdateDataPass from "./Componentes/UpdateData/UpdataDataPass";
 import Orders from "./Componentes/Orders/Orders";
 import CartSection from "./Componentes/Cart/CartSection";
+import Dashboard from "./Componentes/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         />
         <Route path="/home/profile/myOrders" element={<Orders />} />
         <Route path="/home/cart" element={<CartSection />} />
+        <Route path="/home/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );
